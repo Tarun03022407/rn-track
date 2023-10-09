@@ -9,14 +9,14 @@ const trackRouter = express.Router();
 //   res.send(tracks);
 // });
 trackRouter.get("/tracks", async (req, res) => {
-    // res.send(req.user._id)
-    if (!req.user || !req.user._id) {
-      return res.status(401).json({ error: "Authentication required" });
-    }
-    const tracks = await TrackModel.find({ userId: req.user._id });
-    res.send(tracks);
-  });
-  
+  // res.send(req.user._id)
+  if (!req.user || !req.user._id) {
+    return res.status(401).json({ error: "Authentication required" });
+  }
+  const tracks = await TrackModel.find({ userId: req.user._id });
+  res.send(tracks);
+});
+
 trackRouter.post("/tracks", async (req, res) => {
   const { name, locations } = req.body;
   if (!name || !locations) {
